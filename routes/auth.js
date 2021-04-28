@@ -1,8 +1,6 @@
 var express = require("express");
 const Testimonial = require("../model/Testimonial");
 
-
-
 const {
   hieringAddrole,
   requestJob,
@@ -18,7 +16,7 @@ const {
   getconnectById,
   getRequestJobById,
   removeConnect,
-  removeRequestJob
+  removeRequestJob,
 } = require("../controllers/auth");
 var router = express.Router();
 
@@ -35,25 +33,17 @@ router.get("/getalltestimonial", getAllTestimonial);
 //router.get("/uploads/:imageId", getImage)
 
 //Delete
-router.delete("/hiering/:hieringId", removeHiering)
-router.delete("/testimonial/:testimonialId", removeTestimonial)
-router.delete("/connect/:connectId", removeConnect)
-router.delete("/requestJob/:requestJobId", removeRequestJob)
-
-
+router.delete("/hiering/:hieringId", removeHiering);
+router.delete("/testimonial/:testimonialId", removeTestimonial);
+router.delete("/connect/:connectId", removeConnect);
+router.delete("/requestJob/:requestJobId", removeRequestJob);
 
 //param
 
-router.param("hieringId", getHieringById)
-router.param("testimonialId", getTestimonialById)
-router.param("connectId", getconnectById)
-router.param("requestJobId", getRequestJobById)
+router.param("hieringId", getHieringById);
+router.param("testimonialId", getTestimonialById);
+router.param("connectId", getconnectById);
+router.param("requestJobId", getRequestJobById);
 //router.param("imageId", getImageById)
-
-
-
-
-
-
 
 module.exports = router;

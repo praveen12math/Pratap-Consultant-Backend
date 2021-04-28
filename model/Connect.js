@@ -1,12 +1,13 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-var connectSchema = new mongoose.Schema({
+var connectSchema = new mongoose.Schema(
+  {
     email: {
-        type: String,
-        trim: true
+      type: String,
+      trim: true,
     },
-}, {timestamps: true}
-)
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("connect", connectSchema)
-
+module.exports = mongoose.model("connect", connectSchema);

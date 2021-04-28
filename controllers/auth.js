@@ -1,6 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs");
-const _ = require("lodash")
+const _ = require("lodash");
 const Connect = require("../model/Connect");
 const Hiering = require("../model/Hiering");
 const Request = require("../model/Request");
@@ -54,7 +54,6 @@ exports.connectUs = (req, res) => {
   });
 };
 
-
 exports.getAllRequest = (req, res) => {
   Request.find().exec((err, request) => {
     if (err) {
@@ -88,134 +87,121 @@ exports.getAllConnectus = (req, res) => {
   });
 };
 
-
 exports.getAllTestimonial = (req, res) => {
-  Testimonial.find()
-  .exec((err, testimonial) => {
-    if(err){
+  Testimonial.find().exec((err, testimonial) => {
+    if (err) {
       return res.status(400).json({
-        error: "No testimonial found"
-      })
+        error: "No testimonial found",
+      });
     }
-    res.json(testimonial)
-  })
-}
-
+    res.json(testimonial);
+  });
+};
 
 exports.getHieringById = (req, res, next, id) => {
-
-  Hiering.findById(id)
-  .exec((err, hiering) => {
-    if(err){
+  Hiering.findById(id).exec((err, hiering) => {
+    if (err) {
       return res.status(400).json({
-        error: "Hiering role not found"
-      })
+        error: "Hiering role not found",
+      });
     }
-    req.hiering = hiering
-    next()
-  })
-}
-
+    req.hiering = hiering;
+    next();
+  });
+};
 
 exports.removeHiering = (req, res) => {
-  const hiering = req.hiering
+  const hiering = req.hiering;
   hiering.remove((err, hiering) => {
-    if(err){
+    if (err) {
       return res.status(400).json({
-        error: "Failed to delete hiering role"
-      })
-    }
-    res.json({
-      message : "Delete successful",
-      hiering
-    })
-  })
-}
-
-exports.getTestimonialById = (req,res, next, id) => {
-  Testimonial.findById(id)
-  .exec((err, testimonial) => {
-    if(err){
-      return res.status(400).json({
-        error: "Testimonial not found"
-      })
-    }
-    req.testimonial = testimonial
-    next()
-  })
-}
-
-exports.removeTestimonial = (req, res) => {
-  const testimonial = req.testimonial
-  testimonial.remove((err, testimonial) => {
-    if(err){
-      return res.status(400).json({
-        error: "Failed to delete testimonial"
-      })
+        error: "Failed to delete hiering role",
+      });
     }
     res.json({
       message: "Delete successful",
-      testimonial
-    })
-  })  
-}
+      hiering,
+    });
+  });
+};
 
+exports.getTestimonialById = (req, res, next, id) => {
+  Testimonial.findById(id).exec((err, testimonial) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Testimonial not found",
+      });
+    }
+    req.testimonial = testimonial;
+    next();
+  });
+};
+
+exports.removeTestimonial = (req, res) => {
+  const testimonial = req.testimonial;
+  testimonial.remove((err, testimonial) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Failed to delete testimonial",
+      });
+    }
+    res.json({
+      message: "Delete successful",
+      testimonial,
+    });
+  });
+};
 
 exports.getconnectById = (req, res, next, id) => {
-  Connect.findById(id)
-  .exec((err, connect) => {
-    if(err){
+  Connect.findById(id).exec((err, connect) => {
+    if (err) {
       return res.status(400).json({
-        error: "Connects not found"
-      })
+        error: "Connects not found",
+      });
     }
-    req.connect = connect
-    next()
-  })
-}
-
+    req.connect = connect;
+    next();
+  });
+};
 
 exports.getRequestJobById = (req, res, next, id) => {
-  Request.findById(id)
-  .exec((err, requestId) => {
-    if(err){
+  Request.findById(id).exec((err, requestId) => {
+    if (err) {
       return res.status(400).json({
-        error: "Connects not found"
-      })
+        error: "Connects not found",
+      });
     }
-    req.requestId = requestId
-    next()
-  })
-}
-
+    req.requestId = requestId;
+    next();
+  });
+};
 
 exports.removeConnect = (req, res) => {
-  const connect = req.connect
+  const connect = req.connect;
   connect.remove((err, connect) => {
-    if(err){
+    if (err) {
       return res.status(400).json({
-        error: "Failed to delete connects"
-      })
+        error: "Failed to delete connects",
+      });
     }
     res.json({
       message: "Successful delete",
-      connect
-    })
-  })
-}
-
+      connect,
+    });
+  });
+};
 
 exports.removeRequestJob = (req, res) => {
-  const requestId = req.requestId
+  const requestId = req.requestId;
   requestId.remove((err, request) => {
-    if(err){
+    if (err) {
       return res.status(400).json({
-        error: "Failed to delete request job"
-      })  
+        error: "Failed to delete request job",
+      });
     }
     res.json({
       message: "Successful delete",
-      request
-    })
-  })
-}
+      request,
+    });
+  });
+};

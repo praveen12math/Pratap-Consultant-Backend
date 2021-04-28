@@ -1,14 +1,15 @@
-const mangoose = require("mongoose")
+const mangoose = require("mongoose");
 
-var testimonialSchema = new mangoose.Schema({
+var testimonialSchema = new mangoose.Schema(
+  {
     photo: {
-        type: String
+      type: String,
     },
     description: {
-        type: String
-    }
-},
-{timestamps: true}
-)
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mangoose.model("Testimonial", testimonialSchema)
+module.exports = mangoose.model("Testimonial", testimonialSchema);
